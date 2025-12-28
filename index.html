@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Network Automator Web</title>
+  <style>
+    body { font-family: Arial; display: flex; height: 100vh; }
+    textarea { width: 100%; height: 120px; }
+    .left { width: 70%; padding: 10px; }
+    .right { width: 30%; padding: 10px; background: #f5f5f5; }
+    button { margin: 4px 0; width: 100%; }
+    pre { background: #000; color: #0f0; padding: 10px; height: 200px; overflow: auto; }
+  </style>
+</head>
+<body>
+
+<div class="left">
+  <h3>Devices</h3>
+  <input id="user" placeholder="Username"><br>
+  <input id="pwd" type="password" placeholder="Password"><br>
+  <input id="secret" type="password" placeholder="Enable Password"><br>
+
+  <textarea id="ips" placeholder="One IP per line"></textarea>
+  <button onclick="connect()">Connect</button>
+
+  <h3>Commands</h3>
+  <textarea id="cmds"></textarea>
+  <label><input type="checkbox" id="exec" checked> Exec</label>
+  <label><input type="checkbox" id="config"> Config</label>
+  <label><input type="checkbox" id="dry"> Dry Run</label>
+
+  <button onclick="run()">Run</button>
+  <button onclick="rollback()">Rollback</button>
+
+  <h3>Output</h3>
+  <pre id="output"></pre>
+
+  <h3>Diff</h3>
+  <pre id="diff"></pre>
+</div>
+
+<div class="right">
+  <h3>Templates</h3>
+  <button onclick="setCmd('banner motd ^AUTHORIZED ACCESS ONLY^')">Banner MOTD</button>
+  <button onclick="setCmd('ip ssh version 2')">Enable SSH</button>
+  <button onclick="setCmd('no ip http server')">Disable HTTP</button>
+  <button onclick="setCmd('lldp run')">Enable LLDP</button>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
